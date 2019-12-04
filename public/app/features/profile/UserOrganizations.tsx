@@ -44,19 +44,24 @@ export class UserOrganizations extends PureComponent<Props> {
                         <td>{org.name}</td>
                         <td>{org.role}</td>
                         <td className="text-right">
-                          {org.orgId === user.orgId ? (
-                            <span className="btn btn-primary btn-small">Current</span>
-                          ) : (
-                            <Button
-                              variant="inverse"
-                              size="sm"
-                              onClick={() => {
-                                this.props.setUserOrg(org);
-                              }}
-                            >
-                              Select
-                            </Button>
-                          )}
+                          {
+                            user 
+                              ? org.orgId === user.orgId ? (
+                                <span className="btn btn-primary btn-small">Current</span>
+                              ) 
+                              : (
+                                <Button
+                                  variant="inverse"
+                                  size="sm"
+                                  onClick={() => {
+                                    this.props.setUserOrg(org);
+                                  }}
+                                >
+                                  Select
+                                </Button>
+                              )
+                            : null
+                          }
                         </td>
                       </tr>
                     );
